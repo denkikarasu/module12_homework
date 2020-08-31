@@ -57,7 +57,7 @@ Lamp.prototype = new Device();
 
 Lamp.prototype.getStatus = function() {
     console.log(`The ${this.name} is a ${this.deviceType} with ${this.bulbType}, consumes ${this.wattage} W, is`, this.isOperable ? 'operable,' : 'inoperable,', 'currently is', this.isOn ? 'on.' : 'off.', '\n');    
-}
+};
 
 Lamp.prototype.replaceBulb = function() {
     if (this.isOperable) {

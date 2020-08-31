@@ -145,14 +145,14 @@ const floorLamp = new Lamp({
     name: 'floor lamp',
     wattage: 40,
     bulbType: 'filament lamp'
-})
+});
 
 const computer = new Computer({
     name: 'computer',
     deviceType: 'desktop',
     wattage: 400,
     oS: 'Windows'
-})
+});
 
 //============================
 // Вариант сюжета)
