@@ -96,6 +96,7 @@ class Computer extends Device {
                 return true;
             } else { // если не загрузился с 3 попытки
                 console.log(`The ${this.name} cannot be switched on. Gotta call Dad!\n`);
+                this.isOn = false;
                 reportPowerUsage();
                 return false;
             }
