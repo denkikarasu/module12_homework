@@ -6,6 +6,7 @@ class Device {
         this.isOperable = (options.isOperable !== undefined) ? options.isOperable : true; // Есть ли более предпочтительный способ задать дефолтное значение типа Boolean?
         this.wattage = options.wattage;
         this.isOn = false;
+        Device.instances.push(this);
     }
 
     getStatus() {
@@ -44,6 +45,8 @@ class Device {
     }
 
 }
+
+Device.instances = [];
 
 //============================
 class Lamp extends Device {
@@ -96,6 +99,7 @@ class Computer extends Device {
                 return true;
             } else { // если не загрузился с 3 попытки
                 console.log(`The ${this.name} cannot be switched on. Gotta call Dad!\n`);
+                this.isOn = false;
                 reportPowerUsage();
                 return false;
             }
@@ -131,6 +135,17 @@ function reportPowerUsage() {
 }
 
 let consumedPower = 0; 
+
+function verifyPowerUsage(devices) {
+    let consumedPower = 0;
+    devices.forEach(function(item) {
+        if (item.isOn === true) {
+            consumedPower += item.wattage;
+        }
+    })
+    return consumedPower;
+}
+
 
 //============================
 const tableLamp = new Lamp({
@@ -173,3 +188,4 @@ if (!computer.switchOn()) {
     console.log(`\"No excuses left, gotta work...\"\n`);
 }
 
+console.log(`Verifying: total consumed power is ${verifyPowerUsage(Device.instances)} W.`);
